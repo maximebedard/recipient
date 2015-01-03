@@ -1,25 +1,26 @@
 FactoryGirl.define do
   factory :ingredient do
     name 'Orange'
+    #photo { File.open("#{Rails.root}/spec/fixtures/orange.jpg") }
 
-    serving_value 180
-    serving_unit 'g'
+    calories      { Unitwise(47, 'C') }
+    serving       { Unitwise(100, 'g') }
 
-    calories_value 80.0
-    calories_unit 'g'
-    calories_daily_value 0.04
+    # Food components
+    fat           { Unitwise(0.1, 'g') }
+    saturated_fat { Unitwise(0, 'g') }
+    trans_fat     { Unitwise(0, 'g') }
+    cholesterol   { Unitwise(0, 'mg') }
+    sodium        { Unitwise(0, 'mg') }
+    carbohydrate  { Unitwise(12, 'g') }
+    fibre         { Unitwise(2.4, 'g') }
 
-    carbohydrates_value 21.1
-    carbohydrates_unit 'g'
-    carbohydrates_daily_value 0.07
+    vitamin_a     { Unitwise(225, 'IU') }
+    vitamin_c     { Unitwise(69, 'mg') }
+    calcium       { Unitwise(40, 'mg') }
+    iron          { Unitwise(0.1, 'mg') }
 
-    fat_value 0.2
-    fat_unit 'g'
-    fat_daily_value 0.00
-
-    proteins_value 1.7
-    proteins_unit 'g'
-    proteins_daily_value 0.03
+    sugar         { Unitwise(9, 'g') }
+    protein       { Unitwise(0.9, 'g') }
   end
-
 end

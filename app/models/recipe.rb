@@ -4,13 +4,10 @@ class Recipe < ActiveRecord::Base
   has_many :instructions
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
-  has_many :photos
   has_many :categories
+  mount_uploaders :photos, PhotoUploader
 
-  def total_calories
-    ingredients.sum(:calories)
-  end
+  belongs_to :user
 
-  
-
+  validates_presence_of :name
 end

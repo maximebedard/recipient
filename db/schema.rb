@@ -20,20 +20,38 @@ ActiveRecord::Schema.define(version: 20141228180559) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
-    t.decimal  "serving_value",             precision: 6, scale: 1, default: 0.0
-    t.decimal  "calories_value",            precision: 6, scale: 1, default: 0.0
-    t.decimal  "carbohydrates_value",       precision: 6, scale: 1, default: 0.0
-    t.decimal  "fat_value",                 precision: 6, scale: 1, default: 0.0
-    t.decimal  "proteins_value",            precision: 6, scale: 1, default: 0.0
-    t.string   "serving_unit"
+    t.string   "description"
+    t.string   "photo"
+    t.decimal  "calories_value"
     t.string   "calories_unit"
-    t.string   "carbohydrates_unit"
+    t.decimal  "serving_value"
+    t.string   "serving_unit"
+    t.decimal  "fat_value"
     t.string   "fat_unit"
-    t.string   "proteins_unit"
-    t.decimal  "calories_daily_value",      precision: 3, scale: 2
-    t.decimal  "carbohydrates_daily_value", precision: 3, scale: 2
-    t.decimal  "fat_daily_value",           precision: 3, scale: 2
-    t.decimal  "proteins_daily_value",      precision: 3, scale: 2
+    t.decimal  "saturated_fat_value"
+    t.string   "saturated_fat_unit"
+    t.decimal  "trans_fat_value"
+    t.string   "trans_fat_unit"
+    t.decimal  "cholesterol_value"
+    t.string   "cholesterol_unit"
+    t.decimal  "sodium_value"
+    t.string   "sodium_unit"
+    t.decimal  "carbohydrate_value"
+    t.string   "carbohydrate_unit"
+    t.decimal  "fibre_value"
+    t.string   "fibre_unit"
+    t.decimal  "vitamin_a_value"
+    t.string   "vitamin_a_unit"
+    t.decimal  "vitamin_c_value"
+    t.string   "vitamin_c_unit"
+    t.decimal  "calcium_value"
+    t.string   "calcium_unit"
+    t.decimal  "iron_value"
+    t.string   "iron_unit"
+    t.decimal  "sugar_value"
+    t.string   "sugar_unit"
+    t.decimal  "protein_value"
+    t.string   "protein_unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,18 +61,9 @@ ActiveRecord::Schema.define(version: 20141228180559) do
     t.datetime "updated_at"
   end
 
-  create_table "photos", force: true do |t|
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "recipe_ingredients", force: true do |t|
-    t.integer  "value"
-    t.string   "unit"
+    t.decimal  "quantity_value"
+    t.string   "quantity_unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,7 +71,7 @@ ActiveRecord::Schema.define(version: 20141228180559) do
   create_table "recipes", force: true do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "servings"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

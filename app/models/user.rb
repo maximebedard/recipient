@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google]
 
+  has_many :recipes
 
   def self.find_for_google(access_token, signed_in_resource=nil)
    data = access_token.info

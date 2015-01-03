@@ -1,12 +1,9 @@
 source 'https://rubygems.org'
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 ruby '2.1.5'
 
 group :assets do
-
   # Use SCSS for stylesheets
   gem 'sass-rails', '>= 4.0.3'
   # Use Uglifier as compressor for JavaScript assets
@@ -47,9 +44,10 @@ gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 
-gem "paperclip", "~> 4.2"
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'sqlite3'
@@ -58,13 +56,14 @@ group :development, :test do
   # gem 'debugger', group: [:development, :test]
 
   gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
   gem 'rubocop', require: false
   gem 'better_errors'
 end
 
 group :test do
-  gem "codeclimate-test-reporter"
+  gem 'codeclimate-test-reporter'
 end
 
 group :production do
