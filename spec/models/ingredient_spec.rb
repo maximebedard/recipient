@@ -15,4 +15,10 @@ RSpec.describe Ingredient, type: :model do
   describe '#saturated_and_trans_fats' do
     it { expect(subject.saturated_and_trans_fats).to eq(Unitwise(0, 'g')) }
   end
+
+  it 'automatically convert the unit to the canadian standard before saving' do
+    subject.sodium = Unitwise(1, 'g')
+    subject.save
+    expect(subject.sodium.unit.to_s).to eq('mg')
+  end
 end
