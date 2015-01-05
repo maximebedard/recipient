@@ -1,4 +1,6 @@
 class Ingredient < ActiveRecord::Base
+  include Taggable
+
   # Daily value constants based n a 2000 calories diet.
   # http://www.fda.gov/food/guidanceregulation/guidancedocumentsregulatoryinformation/labelingnutrition/ucm064928.htm
   DAILY_VALUE = {
@@ -15,7 +17,7 @@ class Ingredient < ActiveRecord::Base
   }
 
   # Photo uploader (carrierware)
-  mount_uploaders :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 
   # Calculating units
   unit :calories

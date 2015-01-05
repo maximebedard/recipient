@@ -22,5 +22,9 @@ FactoryGirl.define do
 
     sugar         { Unitwise(9, 'g') }
     protein       { Unitwise(0.9, 'g') }
+
+    after(:create) do |ingredient|
+      ingredient.tags << FactoryGirl.create(:tag)
+    end
   end
 end

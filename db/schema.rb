@@ -11,12 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228180559) do
-
-  create_table "categories", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20150105010221) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
@@ -72,6 +67,29 @@ ActiveRecord::Schema.define(version: 20141228180559) do
     t.string   "name"
     t.string   "description"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "starreds", force: true do |t|
+    t.integer  "starrable_id"
+    t.string   "starrable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "starreds", ["starrable_id", "starrable_type"], name: "index_starreds_on_starrable_id_and_starrable_type"
+
+  create_table "taggings", force: true do |t|
+    t.integer "taggable_id"
+    t.string  "taggable_type"
+    t.integer "tag_id"
+  end
+
+  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type"
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,10 +1,6 @@
-# encoding: utf-8
-
 class PhotoUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::MiniMagick
   storage :file
-  
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -29,11 +25,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [52, 52]
+    process resize_to_fill: [52, 52]
   end
 
   version :icon, from_version: :thumb do
-    process resize_to_fit: [26,26]
+    process resize_to_fill: [26, 26]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -41,5 +37,4 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
 end
