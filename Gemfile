@@ -32,12 +32,10 @@ gem 'omniauth-google-oauth2'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 
-group :development, :test do
-  gem 'sqlite3'
-  gem 'spring'
-  # gem 'capistrano-rails'
-  # gem 'debugger', group: [:development, :test]
+gem 'pg'
 
+group :development, :test do
+  gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
@@ -50,6 +48,5 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end

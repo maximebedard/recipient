@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150105010221) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ingredients", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 20150105010221) do
     t.datetime "updated_at"
   end
 
-  add_index "starreds", ["starrable_id", "starrable_type"], name: "index_starreds_on_starrable_id_and_starrable_type"
+  add_index "starreds", ["starrable_id", "starrable_type"], name: "index_starreds_on_starrable_id_and_starrable_type", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer "taggable_id"
@@ -86,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150105010221) do
     t.integer "tag_id"
   end
 
-  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type"
+  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -109,7 +112,7 @@ ActiveRecord::Schema.define(version: 20150105010221) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
