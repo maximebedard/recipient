@@ -2,7 +2,7 @@ class Recipe < ActiveRecord::Base
   include Taggable
 
   # Photo uploader (carrierware)
-  mount_uploaders :photos, PhotoUploader
+  mount_uploaders :photo, PhotoUploader
 
   # Relations
   has_many :instructions

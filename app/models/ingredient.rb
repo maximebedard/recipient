@@ -20,24 +20,23 @@ class Ingredient < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
   # Calculating units
-  unit :calories
-  unit :serving
+  unit_for :calories, :serving
 
   # ref : http://www.inspection.gc.ca/food/labelling/food-labelling-for-industry/nutrition-labelling/information-within-the-nutrition-facts-table/eng/1389198568400/1389198597278?chap=1
   # Nutrients
-  unit :fat,           convert_to: 'g'
-  unit :saturated_fat, convert_to: 'g'
-  unit :trans_fat,     convert_to: 'g'
-  unit :cholesterol,   convert_to: 'mg'
-  unit :sodium,        convert_to: 'mg'
-  unit :carbohydrate,  convert_to: 'g'
-  unit :fibre,         convert_to: 'g'
-  unit :sugar,         convert_to: 'g'
-  unit :protein,       convert_to: 'g'
-  unit :vitamin_a,     convert_to: 'IU'
-  unit :vitamin_c,     convert_to: 'mg'
-  unit :calcium,       convert_to: 'mg'
-  unit :iron,          convert_to: 'mg'
+  unit_for :fat,           convert_to: 'g'
+  unit_for :saturated_fat, convert_to: 'g'
+  unit_for :trans_fat,     convert_to: 'g'
+  unit_for :cholesterol,   convert_to: 'mg'
+  unit_for :sodium,        convert_to: 'mg'
+  unit_for :carbohydrate,  convert_to: 'g'
+  unit_for :fibre,         convert_to: 'g'
+  unit_for :sugar,         convert_to: 'g'
+  unit_for :protein,       convert_to: 'g'
+  unit_for :vitamin_a,     convert_to: 'IU'
+  unit_for :vitamin_c,     convert_to: 'mg'
+  unit_for :calcium,       convert_to: 'mg'
+  unit_for :iron,          convert_to: 'mg'
 
   validates_presence_of :name
   validates_uniqueness_of :name

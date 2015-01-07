@@ -1,5 +1,5 @@
 module Recipient
-  class UnitAttr
+  class UnitFor
     def self.define_on(klass, name, options)
       new(klass, name, options).define
     end
@@ -54,8 +54,11 @@ module Recipient
     end
 
     module ClassMethods
-      def unit(name, options = {})
-        UnitAttr.define_on(self, name, options)
+      def unit_for(*names)
+        options = names.extract_options!
+        names.each do |name|
+          UnitFor.define_on(self, name, options)
+        end
       end
     end
   end

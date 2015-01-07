@@ -1,3 +1,3 @@
 class RecipeIngredient < ActiveRecord::Base
-  unit :quantity
+  unit_for :quantity
 end
