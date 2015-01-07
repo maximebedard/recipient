@@ -1,8 +1,8 @@
 machine:
   environment:
-    CODECLIMATE_REPO_TOKEN: 067b1541d882affb851cf1333b82ac08529c6cc77cb1a35abecda978f01689be
+    CODECLIMATE_REPO_TOKEN: 502bb995a4d85159eef2b090c8f83d942f8fd5e6f568d296e2501ab52b568660
 deployment:
   staging:
     branch: master
     heroku:
-      appname: tvwatchr
+      appname: recipient
