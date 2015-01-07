@@ -5,8 +5,4 @@ module Taggable
     has_many :taggings, as: :taggable, dependent: :destroy
     has_many :tags, through: :taggings
   end
-
-  def tag_names
-    tags.map(&:name)
-  end
 end

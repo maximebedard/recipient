@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:google]
 
   has_many :recipes
-  belongs_to :starrable, polymorphic: true
 
   def self.find_for_google(access_token, _signed_in_resource = nil)
     data = access_token.info
