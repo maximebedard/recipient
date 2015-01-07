@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: recipient_production
-  username: recipient
-  password: <%= ENV['RECIPIENT_DATABASE_PASSWORD'] %>
+  url: <%= ENV['HEROKU_POSTGRESQL_AQUA_URL'] %>
