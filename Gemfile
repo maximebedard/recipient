@@ -13,7 +13,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'unitwise'
+gem 'unitwise-rails', github: 'maximebedard/unitwise-rails'
 
 # SASS
 gem 'bootstrap-sass', '~> 3.3.1'
@@ -32,9 +32,8 @@ gem 'mini_magick'
 gem 'pg'
 
 group :development, :test do
+  gem 'pry-byebug'
   gem 'spring'
-  gem 'rspec-rails', '~> 3.0'
-  gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
   gem 'rubocop', require: false
   gem 'better_errors'

@@ -42,6 +42,7 @@ class Ingredient < ActiveRecord::Base
   validates_uniqueness_of :name
 
   # Validate compatibility of nutrients
+  # validates_compatibility_of :fat, property: 'mass'
 
   def saturated_and_trans_fats
     saturated_fat + trans_fat

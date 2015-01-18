@@ -8,7 +8,7 @@
 # Installation
 
     brew install postgresql imagemagick
-    git clone http://github.com/maximebedard/recipient
+    git clone https://github.com/maximebedard/recipient
     cd recipient
     bundle install
     bundle rake db:migrate
