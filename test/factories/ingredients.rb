@@ -3,7 +3,7 @@ FactoryGirl.define do
     name 'Orange'
     photo         { File.open("#{Rails.root}/test/files/orange.jpg") }
 
-    calories      { Unitwise(47, 'C') }
+    calories      { Unitwise(47, 'J') }
     serving       { Unitwise(100, 'g') }
 
     # Food components

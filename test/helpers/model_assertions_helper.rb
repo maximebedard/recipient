@@ -1,4 +1,4 @@
-module RecipientAssertions
+module ModelAssertionsHelper
   # Assert that the attribute is present when validating the record
   # Example :
   #  def MyModel < ActiveRecord::Base
@@ -25,4 +25,5 @@ module RecipientAssertions
     assert_raise(ActiveRecord::RecordInvalid) { subject_copy.save! }
     assert subject_copy.errors.added? attr, expected_message
   end
+
 end
