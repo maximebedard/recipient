@@ -2,17 +2,56 @@
 <html>
 <head>
   <title>Recipient</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+  <style>
+
+    html, body{
+        height: 100%;
+    }
+    #r-splash-intro {
+      background: url(<%= asset_path '/assets/images/recipientbg1.jpg' %>) no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      width: auto;
+      min-height: 60%;
+      text-align: center;
+      padding-top: 10rem;
+
+    }
+    #r-splash-intro input[type="submit"]{
+        width: 20%;
+    }
+    #r-splash-intro input[type="text"]{
+        width: 80%;
+    }
+
+
+    #r-splash-intro h1{
+        color:#a2c590;
+        font-size: 14rem;
+        margin-bottom:0;
+        text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+    }
+     #r-splash-intro h6{
+        color:#fff;
+        text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.3);
+
+    }
+  </style>
+
+  </head>
 <body>
 
 <%= render partial:'partials/navigation' %>
 <%= render partial:'partials/flashes' %>
-<div class="container-fluid">
+
   <%= yield %>
-</div>
 
 </body>
 </html>

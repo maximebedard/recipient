@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20150105010221) do
   end
 
   create_table "instructions", force: true do |t|
+    t.integer  "order"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,6 +71,10 @@ ActiveRecord::Schema.define(version: 20150105010221) do
   create_table "recipes", force: true do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "photo"
+    t.integer  "preperation_time"
+    t.integer  "total_time"
+    t.integer  "serving"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
