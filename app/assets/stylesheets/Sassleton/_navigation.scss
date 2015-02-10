@@ -1,0 +1,31 @@
+.navbar{
+    display: block;
+    width: 100%;
+    background-color: #46474A;
+    z-index: 99;
+
+    .logo {
+        float: left;
+        margin-right: 3rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+ul.navbar-list {
+    list-style: none;
+    margin-bottom: 0;
+
+    > li{
+        float: left;
+        margin-right: 3rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+       }
+    > li > a{
+        color: #FFF;
+        text-decoration: none;
+
+    }
+}

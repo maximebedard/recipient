@@ -1,0 +1,13 @@
+@mixin button-colorize($color, $border-color, $background-color){
+  color: $color;
+  border-color: $border-color;
+  background-color: $background-color;
+}
+
+@mixin button-scheme($color, $border-color, $background-color) {
+   @include button-colorize($color, $border-color, $background-color);
+    &:hover{
+      @include button-colorize($color, darken($border-color, 2%), darken($background-color, 2%));
+    }
+}
+

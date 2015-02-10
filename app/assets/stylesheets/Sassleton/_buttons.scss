@@ -1,0 +1,28 @@
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+button, input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  @extend %button;
+}
+
+button.button, .button, input[type="submit"].button,
+input[type="reset"].button,
+input[type="button"].button {
+   @extend %button;
+
+   &-primary{
+    @include button-scheme(#FFF, #33C3F0, #33C3F0);
+  }
+
+  &-success{
+    @include button-scheme(#FFF,  #2ecc71, #2ecc71);
+  }
+
+  &-danger{
+    @include button-scheme(#FFF, #e74c3c, #e74c3c);
+  }
+
+}
+
