@@ -1,6 +1,6 @@
 class Ingredient < ActiveRecord::Base
   include Taggable
-  include NutritionFacts
+  include HasNutritionFacts
 
   # Photo uploader (carrierware)
   mount_uploader :photo, PhotoUploader

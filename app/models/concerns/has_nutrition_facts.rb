@@ -1,4 +1,4 @@
-module NutritionFacts
+module HasNutritionFacts
   extend ActiveSupport::Concern
 
   included do
@@ -7,20 +7,20 @@ module NutritionFacts
 
     # ref : http://www.inspection.gc.ca/food/labelling/food-labelling-for-industry/nutrition-labelling/information-within-the-nutrition-facts-table/eng/1389198568400/1389198597278?chap=1
     # Nutrients
-    unit_for :calories,      convert_to: :joule
-    unit_for :fat,           convert_to: :gram
-    unit_for :saturated_fat, convert_to: :gram
-    unit_for :trans_fat,     convert_to: :gram
-    unit_for :cholesterol,   convert_to: :milligram
-    unit_for :sodium,        convert_to: :milligram
-    unit_for :carbohydrate,  convert_to: :gram
-    unit_for :fibre,         convert_to: :gram
-    unit_for :sugar,         convert_to: :gram
-    unit_for :protein,       convert_to: :gram
-    unit_for :vitamin_a,     convert_to: :international_unit
-    unit_for :vitamin_c,     convert_to: :milligram
-    unit_for :calcium,       convert_to: :milligram
-    unit_for :iron,          convert_to: :milligram
+    unit_for :calories,      convert_to: 'J'
+    unit_for :fat,           convert_to: 'g'
+    unit_for :saturated_fat, convert_to: 'g'
+    unit_for :trans_fat,     convert_to: 'g'
+    unit_for :cholesterol,   convert_to: 'mg'
+    unit_for :sodium,        convert_to: 'mg'
+    unit_for :carbohydrate,  convert_to: 'g'
+    unit_for :fibre,         convert_to: 'g'
+    unit_for :sugar,         convert_to: 'g'
+    unit_for :protein,       convert_to: 'g'
+    unit_for :vitamin_a,     convert_to: 'IU'
+    unit_for :vitamin_c,     convert_to: 'mg'
+    unit_for :calcium,       convert_to: 'mg'
+    unit_for :iron,          convert_to: 'mg'
 
     # Validate compatibility of nutrients
     validates_presence_of :calories, :serving
@@ -33,7 +33,7 @@ module NutritionFacts
     validates_unit_compatibility_of :fibre,         with: :gram
     validates_unit_compatibility_of :sugar,         with: :gram
     validates_unit_compatibility_of :protein,       with: :gram
-    validates_unit_compatibility_of :vitamin_a,     with: :international_unit
+    validates_unit_compatibility_of :vitamin_a,     with: 'IU'
     validates_unit_compatibility_of :vitamin_c,     with: :milligram
     validates_unit_compatibility_of :calcium,       with: :milligram
     validates_unit_compatibility_of :iron,          with: :milligram

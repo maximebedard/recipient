@@ -21,9 +21,9 @@ module ModelAssertionsHelper
   # a = FactoryGirl.create(:ingredient)
   # assert_uniqueness_of a, :name
   def assert_uniqueness_of(subject, attr, expected_message = :taken)
+    subject.save
     subject_copy = subject.dup
     assert_raise(ActiveRecord::RecordInvalid) { subject_copy.save! }
     assert subject_copy.errors.added? attr, expected_message
   end
-
 end

@@ -1,9 +1,9 @@
 class Recipe < ActiveRecord::Base
   include Taggable
-  #include NutritionFacts
+  include HasNutritionFacts
 
   # Photo uploader (carrierware)
-  mount_uploaders :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 
   # Relations
   has_many :instructions

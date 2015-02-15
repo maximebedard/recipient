@@ -6,10 +6,10 @@ class CreateIngredients < ActiveRecord::Migration
       t.string :photo
 
       # Calculating units
-      t.unit :calories
       t.unit :serving
 
       # Food components
+      t.unit :calories
       t.unit :fat
       t.unit :saturated_fat
       t.unit :trans_fat

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RecipeIngredientTest < ActiveSupport::TestCase
   def setup
-    @subject = FactoryGirl.create :recipe_ingredient
+    @subject = FactoryGirl.build :recipe_ingredient
     @new_subject = RecipeIngredient.new
   end
 
