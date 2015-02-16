@@ -3,7 +3,6 @@ require 'test_helper'
 class RecipeIngredientTest < ActiveSupport::TestCase
   def setup
     @subject = FactoryGirl.build :recipe_ingredient
-    @new_subject = RecipeIngredient.new
   end
 
   test '#total_calories returns the adjusted calories for this portion' do
@@ -23,18 +22,6 @@ class RecipeIngredientTest < ActiveSupport::TestCase
 
   test '#respond_to is false for total_serving since it is not permitted' do
     refute_respond_to @subject, :total_serving
-  end
-
-  test '#quantity is present' do
-    assert_presence_of @new_subject, :quantity
-  end
-
-  test '#ingredient is present' do
-    assert_presence_of @new_subject, :ingredient
-  end
-
-  test '#recipe is present' do
-    assert_presence_of @new_subject, :recipe
   end
 
   test '#ingredient_serving_unit returns the associated unit of the ingredient' do

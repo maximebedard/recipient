@@ -32,6 +32,7 @@ gem 'mini_magick'
 gem 'pg'
 
 group :development, :test do
+  gem 'mocha', require: false
   gem 'pry-byebug'
   gem 'spring'
   gem 'factory_girl_rails'
