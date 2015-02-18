@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:google]
 
   has_many :recipes
+  has_many :stars, as: :starrable
 
   def self.find_for_google(access_token, _signed_in_resource = nil)
     data = access_token.info
@@ -13,9 +14,8 @@ class User < ActiveRecord::Base
 
     # Create user if not stored in db
     unless user
-      user = User.create(
-      email: data['email'],
-      password: Devise.friendly_token[0, 20])
+      user = User.create(email: data['email'],
+                         password: Devise.friendly_token[0, 20])
     end
     user
   end
