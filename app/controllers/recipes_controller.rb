@@ -9,13 +9,26 @@ class RecipesController < ApplicationController
     @recipe = Recipe.build
   end
 
-  def create; end
+  def create
+  end
 
-  def update; end
+  def update
+  end
 
-  def destroy; end
+  def destroy
+  end
 
-  def show; end
+  def show
+  end
+
+  def starred
+    if current_user?
+      star = @recipe.toggle_starred(current_user)
+      render :show, flash: { notice: 'wat' }
+    else
+      render :show, flash: { notice: I18n.t('devise.unauthenticated') }
+    end
+  end
 
   private
 

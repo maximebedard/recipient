@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resource :recipes do
-    
+    member do
+      post 'starred'
+    end
   end
 
-  root "recipes#index"
+  root 'recipes#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

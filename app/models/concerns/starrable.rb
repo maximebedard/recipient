@@ -6,15 +6,23 @@ module Starrable
     has_many :watchers, as: :users, through: :stars
   end
 
-  def star(user)
+  def starred(user)
     stars.first_or_create!(user: user)
   end
 
-  def unstar(user)
-    stars.first_or_delete!(user: user)
+  def unstarred(user)
+    stars.where(user: user).destroy_all
   end
 
   def starred?(user)
-    stars.where(user: user).first?
+    !stars.where(user: user).first.nil?
+  end
+
+  def toggle_starred(user)
+    if starred?(user)
+      unstarred(user)
+    else
+      starred(user)
+    end
   end
 end
