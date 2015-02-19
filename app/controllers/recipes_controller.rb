@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, except: [:index, :new]
-
   def index
     @recipes = Recipe.all
   end
@@ -19,6 +17,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find params[:id]
   end
 
   def starred
@@ -31,10 +30,6 @@ class RecipesController < ApplicationController
   end
 
   private
-
-  def set_recipe
-    @recipe = Recipe.find params[:id]
-  end
 
   def recipe_params
     params.require(:recipe).permit(:name, :description)

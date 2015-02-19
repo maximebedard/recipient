@@ -2,9 +2,15 @@ Rails.application.routes.draw do
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resource :recipes do
+  resources :recipes do
     member do
       post 'starred'
+    end
+
+    collection do
+      get 'trendings'
+      get 'recents'
+      get 'tags'
     end
   end
 
