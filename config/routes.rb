@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :recipes do
     member do
       post 'starred'
+      post 'publish'
     end
 
     collection do

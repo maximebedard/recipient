@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_recipe, except: [:index, :new]
+
   def index
     @recipes = Recipe.all
   end
@@ -17,19 +20,29 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find params[:id]
   end
 
   def starred
-    if current_user?
-      star = @recipe.toggle_starred(current_user)
-      render :show, flash: { notice: 'wat' }
+    star = @recipe.toggle_starred(current_user)
+    respond_to do |f|
+      f.js   # starred.js.erb
+      f.json { render json: star }
+    end
+  end
+
+  def publish
+    if @recipe.toggle!(:published)
+      redirect_to recipes_path
     else
-      render :show, flash: { notice: I18n.t('devise.unauthenticated') }
+      render :new
     end
   end
 
   private
+
+  def set_recipe
+    @recipe = Recipe.find params[:id]
+  end
 
   def recipe_params
     params.require(:recipe).permit(:name, :description)
