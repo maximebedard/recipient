@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, except: [:index, :new]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.published
   end
 
   def new

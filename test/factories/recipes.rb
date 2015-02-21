@@ -7,5 +7,6 @@ FactoryGirl.define do
                 'sure to save the leftover rinds to make Candied Citrus Peel.'
     calories    { Unitwise(50, :joule)  }
     serving     { Unitwise(1000, :gram) }
+    published true
   end
 end

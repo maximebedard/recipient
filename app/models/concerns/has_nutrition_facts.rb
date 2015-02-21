@@ -23,20 +23,20 @@ module HasNutritionFacts
     unit_for :iron,          convert_to: 'mg'
 
     # Validate compatibility of nutrients
-    validates_presence_of :calories, :serving
-    validates_unit_compatibility_of :fat,           with: :gram
-    validates_unit_compatibility_of :saturated_fat, with: :gram
-    validates_unit_compatibility_of :trans_fat,     with: :gram
-    validates_unit_compatibility_of :cholesterol,   with: :milligram
-    validates_unit_compatibility_of :sodium,        with: :milligram
-    validates_unit_compatibility_of :carbohydrate,  with: :gram
-    validates_unit_compatibility_of :fibre,         with: :gram
-    validates_unit_compatibility_of :sugar,         with: :gram
-    validates_unit_compatibility_of :protein,       with: :gram
-    validates_unit_compatibility_of :vitamin_a,     with: 'IU'
-    validates_unit_compatibility_of :vitamin_c,     with: :milligram
-    validates_unit_compatibility_of :calcium,       with: :milligram
-    validates_unit_compatibility_of :iron,          with: :milligram
+    validates :calories, :serving, presence: true
+    validates :fat,           unit_compatibility: { with: :gram }
+    validates :saturated_fat, unit_compatibility: { with: :gram }
+    validates :trans_fat,     unit_compatibility: { with: :gram }
+    validates :cholesterol,   unit_compatibility: { with: :milligram }
+    validates :sodium,        unit_compatibility: { with: :milligram }
+    validates :carbohydrate,  unit_compatibility: { with: :gram }
+    validates :fibre,         unit_compatibility: { with: :gram }
+    validates :sugar,         unit_compatibility: { with: :gram }
+    validates :protein,       unit_compatibility: { with: :gram }
+    validates :vitamin_a,     unit_compatibility: { with: 'IU' }
+    validates :vitamin_c,     unit_compatibility: { with: :milligram }
+    validates :calcium,       unit_compatibility: { with: :milligram }
+    validates :iron,          unit_compatibility: { with: :milligram }
   end
 
   # Daily value constants based n a 2000 calories diet.

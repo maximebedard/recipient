@@ -4,8 +4,9 @@ class RecipeIngredient < ActiveRecord::Base
 
   unit_for :quantity
 
-  validates_presence_of :quantity, :ingredient, :recipe
-  validates_unit_compatibility_of :quantity, with: :ingredient_serving_unit
+  validates :quantity, :ingredient, :recipe,
+            presence: true
+  validates :quantity, unit_compatibility: { with: :ingredient_serving_unit }
 
   Ingredient.units.except(:serving).keys.each do |nutrient|
     define_method "total_#{nutrient}" do
