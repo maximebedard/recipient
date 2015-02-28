@@ -19,15 +19,139 @@
 
     </div>
 </section>
-<div class="container">
-    <div class="row">
-        <div class="three columns">INSERT SEARCH BOX HERE</div>
-        <div class="nine columns">INSERT RECIPES HERE</div>
-    </div>
 
-</div>
+<main class="cd-main-content">
+        <div class="cd-tab-filter-wrapper">
+            <div class="cd-tab-filter">
+                <ul class="cd-filters">
+                    <li class="placeholder">
+                        <a data-type="all" href="#0">All</a> <!-- selected option on mobile -->
+                    </li>
+                    <li class="filter"><a class="" href="#0" data-type="all">All</a></li>
+                    <li class="filter" data-filter=".color-1"><a href="#0" data-type="color-1">Color 1</a></li>
+                    <li class="filter" data-filter=".color-2"><a href="#0" data-type="color-2">Color 2</a></li>
+                </ul> <!-- cd-filters -->
+            </div> <!-- cd-tab-filter -->
+        </div> <!-- cd-tab-filter-wrapper -->
+
+        <section class="gallery">
+            <ul class="flex-list">
+                <li>
+                    <div class="recipe">1</div>
+                </li>
+                <li>
+                    <div class="recipe">2</div>
+                </li>
+                <li>
+                    <div class="recipe">3</div>
+                </li>
+                <li>
+                    <div class="recipe">4</div>
+                </li>
+                <li>
+                    <div class="recipe">5</div>
+                </li>
+
+            </ul>
+            <div class="cd-fail-message">No results found</div>
+        </section> <!-- cd-gallery -->
+        <!-- Fliter popout-->
+        <div class="cd-filter">
+            <form>
+                <div class="cd-filter-block">
+                    <h4>Search</h4>
+
+                    <div class="cd-filter-content">
+                        <input type="search" placeholder="Try color-1...">
+                    </div> <!-- cd-filter-content -->
+                </div> <!-- cd-filter-block -->
+
+                <div class="cd-filter-block">
+                    <h4>Check boxes</h4>
+
+                    <ul class="">
+                        <li>
+                            <input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
+                            <label class="checkbox-label" for="checkbox1">Option 1</label>
+                        </li>
+
+                        <li>
+                            <input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
+                            <label class="checkbox-label" for="checkbox2">Option 2</label>
+                        </li>
+
+                        <li>
+                            <input class="filter" data-filter=".check3" type="checkbox" id="checkbox3">
+                            <label class="checkbox-label" for="checkbox3">Option 3</label>
+                        </li>
+                    </ul> <!-- cd-filter-content -->
+                </div> <!-- cd-filter-block -->
+
+                <div class="cd-filter-block">
+                    <h4>Select</h4>
+
+                    <div class="cd-filter-content">
+                        <div class="cd-select cd-filters">
+                            <select class="filter" name="selectThis" id="selectThis">
+                                <option value="">Choose an option</option>
+                                <option value=".option1">Option 1</option>
+                                <option value=".option2">Option 2</option>
+                                <option value=".option3">Option 3</option>
+                                <option value=".option4">Option 4</option>
+                            </select>
+                        </div> <!-- cd-select -->
+                    </div> <!-- cd-filter-content -->
+                </div> <!-- cd-filter-block -->
+
+
+            </form>
+
+            <a href="#0" class="cd-close"><%= icon('close') %> Close</a>
+        </div> <!-- cd-filter -->
+
+        <a href="#0" class="cd-filter-trigger"><%= icon('cog') %> Filters</a>
+    </main> <!-- cd-main-content -->
+<p>just some content to push shit</p>
+<p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p><p>just some content to push shit</p>
 <% @recipes.each do |recipe| %>
 
   <%= render @recipe %>
 
 <% end %>
+<script>
+
+jQuery(document).ready(function($){
+    $('.responsive-button').on('click', function(){
+        var $header = $('header');
+        var className = 'nav-visible'
+        if($header.attr('class') === className)
+            $header.removeClass(className);
+        else
+            $header.addClass(className);
+
+    });
+$('.cd-filter-trigger').on('click', function(){
+        triggerFilter(true);
+    });
+    $('.cd-filter .cd-close').on('click', function(){
+        triggerFilter(false);
+    });
+
+    function triggerFilter($bool) {
+        var elementsToTrigger = $([$('.cd-filter-trigger'), $('.cd-filter'), $('.cd-tab-filter'), $('.cd-gallery')]);
+        elementsToTrigger.each(function(){
+            $(this).toggleClass('filter-is-visible', $bool);
+        });
+    }
+    $(window).on('scroll', function(){
+        (!window.requestAnimationFrame) ? fixGallery() : window.requestAnimationFrame(fixGallery);
+    });
+    function fixGallery() {
+        var offsetTop = $('.cd-main-content').offset().top,
+            scrollTop = $(window).scrollTop();
+        ( scrollTop >= offsetTop ) ? $('.cd-main-content').addClass('is-fixed') : $('.cd-main-content').removeClass('is-fixed');
+    }
+
+
+})
+</script>

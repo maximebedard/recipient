@@ -3,6 +3,56 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "Sassleton/sassleton";
+@import "./recipesearch";
 @import "hungry/grid";
 @import "hungry/form";
+
+ul.flex-list{
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style:none;
+  li{
+    margin: 0 0 0.6rem 0;
+    padding: 0.6em 10px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .flex-list{
+    li{
+      flex: 0 1 25% ;
+    }
+  }
+}
+@media only screen and (min-width: 540px) and (max-width: 959px) {
+  .flex-list{
+    li{
+      flex: 0 1 50% ;
+    }
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .flex-list{
+    li{
+      flex: 0 1 100% ;
+    }
+  }
+}
+.recipe{
+  background-color:#2ecc71;
+
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+
+
+
 

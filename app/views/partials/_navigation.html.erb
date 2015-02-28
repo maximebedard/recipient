@@ -1,20 +1,30 @@
-<header>
+<header role="banner">
     <div class="header header--cozy">
         <div class="header__branding">
-            <a href="#" class="logo">LOGO</a>
+          <span class='logo'>
+            <a href="#" class="">LOGO</a>
+          </span>
+            <a href="#" class="responsive-button"><%= icon('bars') %></a>
         </div>
         <div class="header__nav">
             <nav>
                 <ul>
-                    <li><a href="#" >FAQ</a></li>
-                    <li><a href="#">New Features</a></li>
-                    <li><a href="#">Link 3</a></li>
+                    <li><%= link_to "About us".html_safe, "#" %></li>
+                  <% if current_user %>
+                    <li><%= link_to "#{icon('plus')} New Recipe".html_safe, new_recipes_path %></li>
+                    <li><%= link_to "#{icon('cog')} Edit Profile".html_safe, edit_user_registration_path %></li>
+                    <li><%= link_to "#{icon('sign-out')} Sign out".html_safe, destroy_user_session_path, method: :delete %></li>
+                  <% else %>
+                    <li><%= link_to "#{icon('sign-in')} Sign in".html_safe, new_user_session_path %></li>
+                  <% end %>
                 </ul>
             </nav>
         </div>
     </div>
 </header>
 
+
+    <!-- Remove this when header is done yo -->
 <nav class="navbar navbar-default" style="display:none">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
