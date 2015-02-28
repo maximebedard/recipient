@@ -2,14 +2,27 @@ module Starrable
   extend ActiveSupport::Concern
 
   included do
-    has_many :starreds, through: :starrings
+    has_many :stars, as: :starrable
+    has_many :watchers, as: :users, through: :stars
   end
 
-  def star(_user)
-    # starreds << Starred.first_or_create!(user: user)
+  def starred(user)
+    stars.first_or_create!(user: user)
   end
 
-  def unstar(_user)
-    #
+  def unstarred(user)
+    stars.where(user: user).destroy_all
+  end
+
+  def starred?(user)
+    !stars.where(user: user).first.nil?
+  end
+
+  def toggle_starred(user)
+    if starred?(user)
+      unstarred(user)
+    else
+      starred(user)
+    end
   end
 end

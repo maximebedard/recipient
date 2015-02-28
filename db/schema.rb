@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105010221) do
+ActiveRecord::Schema.define(version: 20150221184507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20150105010221) do
     t.string   "name"
     t.string   "description"
     t.string   "photo"
-    t.decimal  "calories_value"
-    t.string   "calories_unit"
     t.decimal  "serving_value"
     t.string   "serving_unit"
+    t.decimal  "calories_value"
+    t.string   "calories_unit"
     t.decimal  "fat_value"
     t.string   "fat_unit"
     t.decimal  "saturated_fat_value"
@@ -76,20 +76,51 @@ ActiveRecord::Schema.define(version: 20150105010221) do
     t.string   "photo"
     t.integer  "preperation_time"
     t.integer  "total_time"
-    t.integer  "serving"
+    t.integer  "user_id"
+    t.decimal  "serving_value"
+    t.string   "serving_unit"
+    t.decimal  "calories_value"
+    t.string   "calories_unit"
+    t.decimal  "fat_value"
+    t.string   "fat_unit"
+    t.decimal  "saturated_fat_value"
+    t.string   "saturated_fat_unit"
+    t.decimal  "trans_fat_value"
+    t.string   "trans_fat_unit"
+    t.decimal  "cholesterol_value"
+    t.string   "cholesterol_unit"
+    t.decimal  "sodium_value"
+    t.string   "sodium_unit"
+    t.decimal  "carbohydrate_value"
+    t.string   "carbohydrate_unit"
+    t.decimal  "fibre_value"
+    t.string   "fibre_unit"
+    t.decimal  "vitamin_a_value"
+    t.string   "vitamin_a_unit"
+    t.decimal  "vitamin_c_value"
+    t.string   "vitamin_c_unit"
+    t.decimal  "calcium_value"
+    t.string   "calcium_unit"
+    t.decimal  "iron_value"
+    t.string   "iron_unit"
+    t.decimal  "sugar_value"
+    t.string   "sugar_unit"
+    t.decimal  "protein_value"
+    t.string   "protein_unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "published"
+  end
+
+  create_table "stars", force: true do |t|
+    t.integer  "starrable_id"
+    t.string   "starrable_type"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "starreds", force: true do |t|
-    t.integer  "starrable_id"
-    t.string   "starrable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "starreds", ["starrable_id", "starrable_type"], name: "index_starreds_on_starrable_id_and_starrable_type", using: :btree
+  add_index "stars", ["user_id", "starrable_id", "starrable_type"], name: "by_user_and_starrable", unique: true, using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer "taggable_id"
@@ -101,6 +132,7 @@ ActiveRecord::Schema.define(version: 20150105010221) do
 
   create_table "tags", force: true do |t|
     t.string   "name"
+    t.string   "color"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

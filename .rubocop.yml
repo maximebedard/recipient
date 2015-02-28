@@ -3,3 +3,18 @@ Metrics/LineLength:
 
 Documentation:
   Enabled: false
+
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+  RunRailsCops: true
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
