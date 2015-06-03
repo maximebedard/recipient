@@ -30,6 +30,7 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 
 gem 'pg'
+gem 'puma'
 
 group :development, :test do
   gem 'mocha', require: false
