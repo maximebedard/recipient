@@ -15,7 +15,7 @@ module Starrable
   end
 
   def starred?(user)
-    @_starred ||= stars.where(user: user).first.present?
+    stars.where(user: user).first.present?
   end
 
   def toggle_starred(user)
