@@ -1,4 +1,4 @@
-module HasNutritionFacts
+module HasNutrients
   extend ActiveSupport::Concern
 
   included do
@@ -24,19 +24,19 @@ module HasNutritionFacts
 
     # Validate compatibility of nutrients
     validates :calories, :serving, presence: true
-    validates :fat,           unit_compatibility: { with: :gram }
-    validates :saturated_fat, unit_compatibility: { with: :gram }
-    validates :trans_fat,     unit_compatibility: { with: :gram }
-    validates :cholesterol,   unit_compatibility: { with: :milligram }
-    validates :sodium,        unit_compatibility: { with: :milligram }
-    validates :carbohydrate,  unit_compatibility: { with: :gram }
-    validates :fibre,         unit_compatibility: { with: :gram }
-    validates :sugar,         unit_compatibility: { with: :gram }
-    validates :protein,       unit_compatibility: { with: :gram }
-    validates :vitamin_a,     unit_compatibility: { with: 'IU' }
-    validates :vitamin_c,     unit_compatibility: { with: :milligram }
-    validates :calcium,       unit_compatibility: { with: :milligram }
-    validates :iron,          unit_compatibility: { with: :milligram }
+    validates :fat,           compatibility: { with: :gram }
+    validates :saturated_fat, compatibility: { with: :gram }
+    validates :trans_fat,     compatibility: { with: :gram }
+    validates :cholesterol,   compatibility: { with: :milligram }
+    validates :sodium,        compatibility: { with: :milligram }
+    validates :carbohydrate,  compatibility: { with: :gram }
+    validates :fibre,         compatibility: { with: :gram }
+    validates :sugar,         compatibility: { with: :gram }
+    validates :protein,       compatibility: { with: :gram }
+    validates :vitamin_a,     compatibility: { with: 'IU' }
+    validates :vitamin_c,     compatibility: { with: :milligram }
+    validates :calcium,       compatibility: { with: :milligram }
+    validates :iron,          compatibility: { with: :milligram }
   end
 
   # Daily value constants based n a 2000 calories diet.
@@ -62,6 +62,6 @@ module HasNutritionFacts
   # Return the daily value of the nutrient symbol.
   def daily_value_of(nutrient)
     return nil unless DAILY_VALUE.include?(nutrient)
-    (send(nutrient) / DAILY_VALUE[nutrient]).value
+    (public_send(nutrient) / DAILY_VALUE[nutrient]).value
   end
 end

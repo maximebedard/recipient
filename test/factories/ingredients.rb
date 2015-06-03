@@ -1,8 +1,6 @@
 FactoryGirl.define do
   factory :ingredient do
     name 'Orange'
-    photo         { File.open("#{Rails.root}/test/files/orange.jpg") }
-
     serving       { Unitwise(100, 'g') }
     # Food components
     calories      { Unitwise(47, 'J') }
